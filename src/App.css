@@ -28,6 +28,40 @@
   color: #61dafb;
 }
 
+/* syyle start */
+.btn_wrapper button {
+  background-color: red;
+  border: 0px;
+  padding: 10px;
+  border-radius: 4px;
+  color: white;
+  box-shadow: indigo;
+}
+.img_wrapper img {
+  width: 100px;
+  margin-top: -10px;
+}
+.card_wrapper {
+  height: 100px;
+  width: 500px;
+  border: 1px solid green;
+  margin-left: 10%;
+}
+.item {
+  float: left;
+  display: inline-block;
+  width: 120px;
+  padding: 20px;
+  height: 70px;
+}
+.add_to_cart img {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  right: 1%;
+  top: 1%;
+}
+/* end style */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
