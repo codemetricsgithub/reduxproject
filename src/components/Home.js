@@ -1,25 +1,38 @@
-import React from "react";
-const Home = () => {
-  return (
-    <>
-      <div className="add_to_cart">
-        <img src="https://cdn.onlinewebfonts.com/svg/img_260077.png" />
-      </div>
-      <h1> Home Components </h1>
-      <div className="cart_wrapper">
-        <div className="img_wrapper item">
-          <img src="https://source.unsplash.com/random" />
-        </div>
+import React from 'react';
 
-        <div className="text_wrapper item">
-          <span> random Image price:</span>
-          <span> $1000 </span>
+function Home(props) {
+    console.warn('props', props);
+    return (
+        <div>
+            <h1>Home Component</h1>
+            <div className="cart-wrapper">
+                <div className="img-wrapper item">
+                    <img src="https://www.fdfproject.com/wp-content/uploads/2018/12/iphone-png.png" />
+                </div>
+                <div className="text-wrapper item">
+                    <span>I-Phone</span>
+                    <span>Price: $1000.00</span>
+                </div>
+                <div className="btn-wrapper item">
+                    <button
+                        onClick={() => {
+                            props.addToCartHandler({ pice: 1000, name: 'i phone 11' });
+                        }}
+                    >
+                        Add To Cart
+                    </button>
+
+                    <button
+                        className="removetocart"
+                        onClick={() => {
+                            props.removeToCartHandler({ pice: 1000, name: 'i phone 11' });
+                        }}
+                    >
+                        Remove to cart
+                    </button>
+                </div>
+            </div>
         </div>
-        <div className="btn_wrapper item">
-          <button> add to card </button>
-        </div>
-      </div>
-    </>
-  );
-};
+    );
+}
 export default Home;
