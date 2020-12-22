@@ -1,6 +1,7 @@
 import React from 'react';
-
-const Contact = (props) => {
+import Avatar from 'react-avatar';
+const Contact = ({ contact }) => {
+    const { name, phone, email } = contact;
     return (
         <tr>
             <td>
@@ -9,9 +10,19 @@ const Contact = (props) => {
                     <label className="custom-control-label"></label>
                 </div>
             </td>
-            <td>{props.contact.name} </td>
-            <td>{props.contact.phone} </td>
-            <td>{props.contact.email} </td>
+            <td>
+                <Avatar className="mr-2" name={name} size="50" round="25px 10px 26px" /> {name}
+            </td>
+            <td>{phone} </td>
+            <td>{email} </td>
+            <td className="actions">
+                <a href="#">
+                    <span className="material-icons mr-2"> edit </span>
+                </a>
+                <a href="#">
+                    <span className="material-icons mr-2 text-danger"> remove_circle </span>
+                </a>
+            </td>
         </tr>
     );
 };
