@@ -1,16 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import HomeContainer from './containers/HomeContainer'
-import HeaderContainer from './containers/HeaderContainer'
+import './style/App.scss';
+import Contacts from './components/contact/Contacts';
+import Navbar from './components/elements/Navbar';
+import { Provider, provider } from 'react-redux';
+import Store from './Store';
 function App() {
-  return (
-    <div className="App">
-      <HeaderContainer />
-  
-      <HomeContainer />
-    </div>
-  );
+    return (
+        <Provider store={Store}>
+            <div className="App">
+                <Navbar />
+                <div className="container">
+                    <div className="py-3">
+                        <Contacts />
+                    </div>
+                </div>
+            </div>
+        </Provider>
+    );
 }
-
 export default App;
