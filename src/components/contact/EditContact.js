@@ -1,32 +1,41 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import shortid from 'shortid';
-import { addContact } from '../../actions/contactAction';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+import { getContact } from '../../actions/contactAction';
 
-const AddContact = () => {
+const EditContact = () => {
+    let { id } = useParams(); // take given data as editable
+    // alert(id);
     let history = useHistory();
     const dispatch = useDispatch();
+    const contactedit = useSelector((state) => state.contact.contactedit);
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
-    const createContact = (event) => {
+
+    useEffect(() => {
+        if (contactedit != null) {
+            setName(contactedit.name);
+            setPhone(contactedit.phone);
+            setEmail(contactedit.email);
+        }
+        dispatch(getContact(id));
+    }, [contactedit]);
+    const onUpdateContactedit = (event) => {
         event.preventDefault();
-        // console.log(name, phone, email); //to show working or not
-        const new_contact = {
-            id: shortid.generate(), //Random id generate
+
+        const update_contact = Object.assign(contactedit, {
             name: name,
             phone: phone,
             email: email,
-        };
-        dispatch(addContact(new_contact));
-        history.push('/'); // redirect in to home page
+        });
+        console.log(update_contact);
     };
     return (
         <div className="card border-0 shadow">
             <div className="card-header ">Add a contact </div>
             <div className="card-body">
-                <form onSubmit={(event) => createContact(event)}>
+                <form onSubmit={(event) => onUpdateContactedit(event)}>
                     <div className="form-group mb-2 ">
                         <input
                             type="text"
@@ -54,11 +63,11 @@ const AddContact = () => {
                             onChange={(event) => setEmail(event.target.value)}
                         />
                     </div>
-                    <button className="btn btn-outline-primary">create contact</button>
+                    <button className="btn  btn-outline-info">update contact</button>
                 </form>
             </div>
         </div>
     );
 };
 
-export default AddContact;
+export default EditContact;

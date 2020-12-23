@@ -2,7 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Contact from './Contact';
 const Contacts = () => {
-    const contacts = useSelector((state) => state.contacts); //if i use only state it represents whole data
+    const contacts = useSelector((state) => state.contact.contacts);
+    //if i use only state it represents whole data. contact. to combine reducers from index.js
     console.log(contacts);
     return (
         <div>
@@ -23,7 +24,7 @@ const Contacts = () => {
                 </thead>
                 <tbody>
                     {contacts.map((contact) => (
-                        <Contact contact={contact} />
+                        <Contact contact={contact} key={contact.id} />
                     ))}
                 </tbody>
             </table>
