@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { getContact } from '../../actions/contactAction';
+import { getContact, updateContact } from '../../actions/contactAction';
+import { UPDATE_CONTACT } from '../../constant/Types';
 
 const EditContact = () => {
     let { id } = useParams(); // take given data as editable
@@ -21,6 +22,7 @@ const EditContact = () => {
         }
         dispatch(getContact(id));
     }, [contactedit]);
+
     const onUpdateContactedit = (event) => {
         event.preventDefault();
 
@@ -29,6 +31,9 @@ const EditContact = () => {
             phone: phone,
             email: email,
         });
+        dispatch(updateContact(UPDATE_CONTACT));
+        history.push('/');
+        //Object.assign(contactedit,  holds previous data while create new data
         console.log(update_contact);
     };
     return (

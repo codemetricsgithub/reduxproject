@@ -1,4 +1,4 @@
-import { CREATE_CONTACT, GET_CONTACT } from '../constant/Types';
+import { CREATE_CONTACT, GET_CONTACT, UPDATE_CONTACT } from '../constant/Types';
 
 const initialState = {
     contacts: [
@@ -252,6 +252,13 @@ export const contactReducer = (state = initialState, action) => {
             return {
                 ...state, //holds previoud data
                 contactedit: arr,
+            };
+        case UPDATE_CONTACT:
+            return {
+                ...state,
+                contacts: state.contacts.map((contact) =>
+                    contact.id == action.payload.id ? action.payload : contact
+                ),
             };
         default:
             return state;
