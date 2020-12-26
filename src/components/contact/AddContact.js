@@ -38,7 +38,7 @@ const AddContact = () => {
                     </div>
                     <div className="form-group mb-2">
                         <input
-                            type="text"
+                            type="number"
                             className="form-control"
                             placeholder="Enter your Phone Number"
                             value={phone}
@@ -47,7 +47,7 @@ const AddContact = () => {
                     </div>
                     <div className="form-group mb-2">
                         <input
-                            type="text"
+                            type="email"
                             className="form-control"
                             placeholder="Enter your Email"
                             value={email}

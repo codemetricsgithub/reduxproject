@@ -53,6 +53,7 @@ const EditContact = () => {
                     <div className="form-group mb-2">
                         <input
                             type="text"
+                            size="10"
                             className="form-control"
                             placeholder="Enter your Phone Number"
                             value={phone}
@@ -61,7 +62,7 @@ const EditContact = () => {
                     </div>
                     <div className="form-group mb-2">
                         <input
-                            type="text"
+                            type="email"
                             className="form-control"
                             placeholder="Enter your Email"
                             value={email}
